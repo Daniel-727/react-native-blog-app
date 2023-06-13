@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import IndexScreen from "./src/screens/indexScreen";
+import IndexScreen from "./src/screens/IndexScreen";
+import { BlogProvider } from "./src/context/BlogContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,8 +16,13 @@ const App = () => {
   );
 };
 
+// Wrapping our App in our custom provider
 export default () => {
-  return <App />;
+  return (
+    <BlogProvider>
+      <App />
+    </BlogProvider>
+  );
 };
 
 const styles = StyleSheet.create({
